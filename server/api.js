@@ -104,7 +104,12 @@ app.post('/', upload.single('image'), (req, res, next) => {
   });
 });
 
-
+// var port = process.env.PORT || '3000'
+// app.listen(port, err => {
+//     if (err)
+//         throw err
+//     console.log('Server listening on port', port)
+// })
 
 //returns an object mapping user ids to profile picture URLs
 router.get("/profile-pictures", (req, res) => {

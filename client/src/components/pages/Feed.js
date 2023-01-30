@@ -64,6 +64,38 @@ const Feed = ({ userName, viewer, goTo, popupHandlers }) => {
   };
   return (
     <div className="Feed-container">
+      <h1>To Upload Image on mongoDB</h1>
+      
+     <div>
+        <form action="/" method="POST" enctype="multipart/form-data">
+            <div>
+                <label for="name">Image Title</label>
+                <input type="text" id="name" placeholder="Name"
+                        name="name" required/>
+            </div>
+
+            <div>
+                <label for="desc">Image Description</label>
+                <textarea id="desc" name="desc"  rows="2"
+                          placeholder="Description" required>
+                </textarea>
+            </div>
+
+            <div>
+                <label for="image">Upload Image</label>
+                <input type="file" id="image"
+                       name="image" required/>
+            </div>
+            <div>
+                <button type="submit">Submit</button>
+            </div>
+        </form>
+
+      </div>
+
+      
+
+
       <div className="Feed-snippets">
         {snippets && authorToPic ? (
           <SnippetDisplay
