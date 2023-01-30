@@ -6,13 +6,17 @@
 | This file defines the routes for your server.
 |
 */
-
+//import express from 'express';
 const express = require("express");
 
 // import models so we can interact with the database
 const User = require("./models/user");
 const Snippet = require("./models/snippet");
 const Tree = require("./models/tree");
+
+
+const{ getItems, createItem } = require('./controllers/items');
+
 
 // import authentication library
 const auth = require("./auth");
@@ -22,6 +26,8 @@ const router = express.Router();
 
 //initialize socket
 const socketManager = require("./server-socket");
+
+
 
 router.post("/login", auth.login);
 router.post("/logout", auth.logout);
@@ -44,6 +50,9 @@ router.post("/initsocket", (req, res) => {
 // |------------------------------|
 // | write your API methods below!|
 // |------------------------------|
+
+// router.get('/',getItems);
+// router.post('/',createItem);
 
 //returns an object mapping user ids to profile picture URLs
 router.get("/profile-pictures", (req, res) => {
@@ -236,6 +245,12 @@ router.post("/snippet-attribs", (req, res) => {
     updateDB();
   });
 });
+
+
+// router.get('/',getItems);
+// router.post('/',createItem);
+
+
 
 // anything else falls to this "not found" case
 router.all("*", (req, res) => {
