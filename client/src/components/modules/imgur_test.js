@@ -13,11 +13,14 @@ const MAX_TEXTBOX_HEIGHT = 0.6 * window.innerHeight;
 const ImageForm = (props) => {
 
     const [img_file, setImg] = useState(undefined);
+    const [img_submitted, setSubmitted] = useState(false)
     const [img_url, setUrl] =  useState("");
 
+    const file = document.getElementById("file");
+    const img = document.getElementById("img");
 
    useEffect(() => {
-     const img = document.getElementById("img")
+     
      const file = document.getElementById("file");
      const url = document.getElementById("url");
 
@@ -25,10 +28,17 @@ const ImageForm = (props) => {
      setUrl(url)
    }, []);
 
+   useEffect(() => {
+
+
+
+   }, [img_submitted]);
+
+
   const handleInput = (ev) => {
     const formdata = new FormData()
-        setImg(ev.target.files[0])
-        formdata.append("image", img_file)
+        //setImg(ev.target.files[0])
+        formdata.append("image", file)
         console.log(formdata)
         fetch("https://api.imgur.com/3/image/", {
             method: "post",
